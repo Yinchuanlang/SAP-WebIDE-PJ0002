@@ -1,0 +1,9 @@
+{
+  "PJ0002.HDB002::TB001": {
+    "target": {
+      "object": "PJ0001.YCL_DB::TB001",
+      "schema": "PJ0001_HDI_YCL_DB_1",
+      "database": "YCL"
+    }
+  }
+}

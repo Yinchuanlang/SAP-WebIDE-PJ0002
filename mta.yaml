@@ -1,0 +1,40 @@
+ID: PJ0002
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: HDB002
+   type: hdb
+   path: HDB002
+   requires:
+    - name: hdi_HDB002
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name}
+
+
+
+    - name: cross-container-service-1
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+                          
+
+
+resources:
+ - name: hdi_HDB002
+   parameters:
+      config:
+         schema: SCH002
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
+ - name: cross-container-service-1
+   parameters:
+      service-name: XSA_ADMIN-frnu7eetu70prp7m-PJ0001-hdi_YCL_DB
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+
